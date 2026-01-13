@@ -1,0 +1,40 @@
+﻿@using RazorViews.Models
+
+@{
+    string appTitle = "Asp.Net Core App";
+    List<Person> people = new List<Person>
+    {
+        new Person { Name = "John", DateOfBirth = DateTime.Parse("2027-05-05") },
+        new Person { Name = "Jane", DateOfBirth = DateTime.Parse("2027-05-05") }
+    };
+
+} <!--razor block-->
+@{
+    //local funct
+    double? GetAge(DateTime? dateOfBirth)
+    {
+        if (dateOfBirth is not null)
+        {
+            return DateTime.Now.Year - dateOfBirth.Value.Year;
+        }
+        else
+        {
+            return null; 
+        }
+    }
+    int x = 10;
+    string Name { get; set; } = "hello name";
+    string alertMex = $"<script>alert('{people.Count} people found')</script>";  //html raw string
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@appTitle</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    @Html.Raw(alertMex)
+    Welcome
+</body>
+</html>
