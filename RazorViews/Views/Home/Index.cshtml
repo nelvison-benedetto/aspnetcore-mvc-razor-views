@@ -15,7 +15,7 @@
         }
         else
         {
-            return null; 
+            return null;
         }
     }
     int x = 10;
@@ -26,7 +26,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>@ViewData["appTitle"]</title>
+    <!--<title>@ViewData["appTitle"]</title>-->
+    <title>@ViewBag.appTitle</title>  <!--better than using @ViewData-->
     <meta charset="utf-8" />
     <link href="~/StyleSheet.css" rel="stylesheet"/>
 </head>
@@ -34,9 +35,9 @@
     @Html.Raw(alertMex)
     <h1>Welcome</h1>
     @{
-        List<Person> people = (List<Person>)ViewData["people"];
+        //List<Person> people = (List<Person>)ViewData["people"];
     }
-    @for (int i = 0; i < 2; i++)
+    @foreach(Person person in ViewBag.people)  //
     {
         Person person = people[i];
         <h5>@person.Name</h5>
